@@ -4,7 +4,7 @@ public class ArrayListImp {
     int index=0;
 
     public void add(Object ele){
-        if(index>=size()){
+        if(index>=arr.length){
             increase();
         }
         arr[index++]=ele;
@@ -23,7 +23,7 @@ public class ArrayListImp {
     }
 
     public Object get(int index){
-        if(index<0 || index>size()){
+        if(index<0 || index>=size()){
             throw new ArrayIndexOutOfBoundsException();
         }
         return arr[index];
@@ -34,7 +34,7 @@ public class ArrayListImp {
         if(pos<0 || pos>size()){
             throw new ArrayIndexOutOfBoundsException();
         }
-        if(index>=size())increase();
+        if(index>=arr.length)increase();
 
         for(int i=size()-1;i>=pos;i--){
             arr[i+1]=arr[i];
@@ -48,7 +48,7 @@ public class ArrayListImp {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        for(int i=pos+1;i<arr.length;i++){
+        for(int i=pos+1;i<size();i++){
             arr[i-1]=arr[i];
         }
         index--;
