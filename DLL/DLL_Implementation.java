@@ -103,4 +103,62 @@ public class DLL_Implementation {
         newnode.next=temp.next;
         temp.next=newnode;
     }
+
+    //Remove Head
+
+    public void removeHead(){
+        if(head==null){
+            System.out.println("List is empty");
+            return;
+        }
+        head=head.next;
+        if(head!=null){
+            head.prev=null;
+        }
+        count--; 
+    }
+
+    //remove Tail
+
+    public void removeTail(){
+        if(head==null){
+            System.out.println("empty");
+            return;
+        }
+        if(head.next==null){
+            head=null;
+            count--;
+            return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.prev.next=null;
+        temp.prev=null;
+        count--; 
+    }
+
+    // Remove at specific position
+
+    public void removeAtIndex(int index){
+        if(index<0 || index>count){
+            System.out.println("invalid index");
+        }
+        if(index==0){
+            removeHead();
+            return;
+        }
+        if(index==count-1){
+            removeTail();
+            return;
+        }
+        Node temp=head;
+        for(int i=0;i<index;i++){
+            temp=temp.next;
+        }
+        temp.next.prev=temp.prev;
+        temp.prev.next=temp.next;
+        count--;
+    }
 }
